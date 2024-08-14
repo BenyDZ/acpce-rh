@@ -1,0 +1,4 @@
+node_modules/
+hide/
+
+package-lock.json
