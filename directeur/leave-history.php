@@ -23,7 +23,7 @@
     <div class="flex-none">
       <?php
         $page='historique-de-congé';
-        include 'include/dg-sidebar.php';
+        include 'include/directeur-sidebar.php';
       ?>
     </div>
 
@@ -31,7 +31,7 @@
       <div class="flex flex-col">
         <?php
           $page='historique-de-congé';
-          include 'include/dg-navbar.php';
+          include 'include/directeur-navbar.php';
         ?>
 
         <div class="flex w-full h-full p-5">

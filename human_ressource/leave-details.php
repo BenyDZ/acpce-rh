@@ -2,7 +2,7 @@
   session_start();
   error_reporting(0);
   include('../include/dbconn.php');
-  if(strlen($_SESSION['dglogin'])==0){   
+  if(strlen($_SESSION['rhlogin'])==0){   
     header('location:../index.php');
   } else {
     $empId = intval($_GET['empId']);
@@ -17,7 +17,7 @@
     foreach($results as $result){
       $r = $result;
     }
-
+    
     $sql1 = "SELECT IdCongé, FromDate, ToDate, PostDate, DGResponse, DGResponseDate, DGSignature, DGSignatureDate, IdEmployé, Statuts from Congé where IdCongé=:leaveId";
     $query1 = $dbh -> prepare($sql1);
     $query1->bindParam(':leaveId',$leaveId ,PDO::PARAM_STR);
@@ -55,7 +55,7 @@
     <div class="flex-none">
       <?php
         $page = "leave-details";
-        include 'include/dg-sidebar.php';
+        include 'include/rh-sidebar.php';
       ?>
     </div>
 
@@ -64,7 +64,7 @@
       <div class="flex flex-col">
         <?php
           $page = "leave-details";
-          include 'include/dg-navbar.php';
+          include 'include/rh-navbar.php';
         ?>
 
         <div class="flex flex-col w-full h-full p-5">
@@ -88,21 +88,10 @@
             <div class="flex justify-between m-1 border-2 divide-x-2 items-center">
               <h2 class="text-center w-full p-4 font-semibold">Réponse du DG : <span class="font-normal"><?php echo htmlentities($r1->DGResponse);?></span></h2>
               <h2 class="text-center w-full p-4 font-semibold">Date de la réponse : <span class="font-normal"><?php echo htmlentities($r1->DGResponseDate);?></span></h2>
-              <div class="join w-full p-4 justify-center">
-                <?php if($r1->DGResponse == 'En attente'){?>
-                  <a class="btn btn-sm btn-success join-item text-white" href="include/accept-leave-request.php?leaveId=<?php echo htmlentities($r1->IdCongé);?>&empId=<?php echo htmlentities($r->Id);?>&accept=1"><i class="lni lni-checkmark-circle"></i>Approuver</a>
-                  <a class="btn btn-sm btn-error join-item text-white" href="include/accept-leave-request.php?leaveId=<?php echo htmlentities($r1->IdCongé);?>&empId=<?php echo htmlentities($r->Id);?>&accept=0">Refuser<i class="lni lni-trash-can"></i></a>
-                <?php  }?>
-              </div>
             </div>
             <div class="flex justify-between m-1 border-2 divide-x-2">
               <h2 class="text-center w-full p-4 font-semibold">Signature du DG : <span class="font-normal"><?php echo htmlentities($dgSignature);?></span></h2>
               <h2 class="text-center w-full p-4 font-semibold">Date de la signature : <span class="font-normal"><?php echo htmlentities($r1->DGSignatureDate);?></span></h2>
-              <div class="w-full p-4 flex justify-center">
-                <?php if($r1->DGResponse == 'Approuver' && $r1->RHResponse == 1){?>
-                  <a class="btn btn-sm btn-success join-item text-white">Signer</a>
-                <?php  }?>
-              </div>
             </div>
             <div class="p-4 border-2 m-1"><h2 class="text-center font-bold">Statut de la demande : <span class="font-normal"><?php echo htmlentities($r1->Statuts);?></span></h2></div>
           </div>

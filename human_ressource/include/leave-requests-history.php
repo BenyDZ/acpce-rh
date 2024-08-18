@@ -10,6 +10,8 @@
       <th>Date de départ</th>
       <th>Date de fin</th>
       <th>Date de la demande</th>
+      <th>Réponse du directeur</th>
+      <th>Date de la réponse</th>
       <th>Statut</th>
       <th></th>
     </tr>
@@ -17,7 +19,7 @@
   <tbody>
     <?php 
     $eid=$_SESSION['eid'];
-    $sql = "SELECT IdCongé, FromDate, ToDate, PostDate, DGResponse, DGSignature, IdEmployé, Statuts from Congé where DGResponse='En attente' OR DGSignature=0";
+    $sql = "SELECT IdCongé, FromDate, ToDate, PostDate, DGResponse, DGResponseDate, DGSignature, IdEmployé, Statuts from Congé where DGResponse='Approuvé' AND RHResponse=0";
     $query = $dbh -> prepare($sql);
     // $query->bindParam(':eid',$eid,PDO::PARAM_STR);
     $query->execute();
@@ -42,7 +44,7 @@
           if($query1->rowCount() > 0)
           {
             foreach($results1 as $result1)
-            { ?>
+            {?>
               <tr>
                 <td><?php echo $cnt;?></td>
                 <td><?php echo htmlentities($result1->Nom);?></td>
@@ -50,8 +52,10 @@
                 <td><?php echo htmlentities($result->FromDate);?></td>
                 <td><?php echo htmlentities($result->ToDate);?></td>
                 <td><?php echo htmlentities($result->PostDate);?></td>
+                <td><?php echo htmlentities($result->DGResponse);?></td>
+                <td><?php echo htmlentities($result->DGResponseDate);?></td>
                 <td><?php echo htmlentities($result->Statuts);?></td>
-                <td><a class="btn btn-sm" href="../dg/leave-details.php?leaveId=<?php echo htmlentities($result->IdCongé);?>&empId=<?php echo htmlentities($result->IdEmployé);?>">Voir les details</a></td>
+                <td><a class="btn btn-sm" href="../human_ressource/leave-details.php?leaveId=<?php echo htmlentities($result->IdCongé);?>&empId=<?php echo htmlentities($result->IdEmployé);?>">Voir les details</a></td>
               </tr>
               <?php $cnt1++;
             }

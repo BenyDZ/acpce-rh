@@ -45,7 +45,7 @@
               <td><?php echo htmlentities($result->ToDate);?></td>
               <td><?php echo htmlentities($result->PostDate);?></td>
               <td><?php echo htmlentities($result->Statuts);?></td>
-              <td><a class="btn btn-sm" href="../dg/leave-details.php?leaveId=<?php echo htmlentities($result->IdCongé);?>&empId=<?php echo htmlentities($result->IdEmployé);?>">Voir les details</a></td>
+              <td><a class="btn btn-sm" href="../human_ressource/leave-details.php?leaveId=<?php echo htmlentities($result->IdCongé);?>&empId=<?php echo htmlentities($result->IdEmployé);?>">Voir les details</a></td>
             </tr>
             <?php $cnt1++;
           }

@@ -52,7 +52,7 @@
   <div class="flex h-screen">
     <div class="flex-none">
       <?php
-        $page='congé';
+        $page='mes-demandes-de-congé';
         include 'include/rh-sidebar.php';
       ?>
     </div>
@@ -60,7 +60,7 @@
     <div class="w-full">
       <div class="flex flex-col h-full">
         <?php
-          $page='congé';
+          $page='mes-demandes-de-congé';
           include 'include/rh-navbar.php';
         ?>
 
@@ -108,7 +108,7 @@
             <?php }?>
 
             <?php
-              include "include/leave-history.php";
+              include "include/my-leave-history.php";
             ?>
 
           </div>

@@ -24,19 +24,22 @@
       ?>
     </div>
 
-    <div class="w-full">
-      <div class="flex">
+    <div class="w-full ">
+      <div class="flex flex-col w-full h-full">
         <?php
           $page='dashboard';
           include 'include/admin-navbar.php';
         ?>
-      </div>
 
-      <div class="flex">
-
+        <div class="flex w-full h-full bg-gray-100">
+  
+        </div>
       </div>
     </div>
   </div>
+
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
 

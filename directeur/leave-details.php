@@ -55,7 +55,7 @@
     <div class="flex-none">
       <?php
         $page = "leave-details";
-        include 'include/dg-sidebar.php';
+        include 'include/directeur-sidebar.php';
       ?>
     </div>
 
@@ -64,7 +64,7 @@
       <div class="flex flex-col">
         <?php
           $page = "leave-details";
-          include 'include/dg-navbar.php';
+          include 'include/directeur-navbar.php';
         ?>
 
         <div class="flex flex-col w-full h-full p-5">

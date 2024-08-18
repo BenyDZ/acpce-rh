@@ -2,7 +2,7 @@
     session_start();
     error_reporting(0);
     include('../include/dbconn.php');
-    if(strlen($_SESSION['emplogin'])==0){   
+    if(strlen($_SESSION['safAttachelogin'])==0){   
         header('location:../index.php');
     } else {
       if(isset($_POST['apply']))
@@ -196,6 +196,10 @@
                         <div class="relative mt-6">
                           <input type="date" name="toDate" id="toDate" placeholder="Date de de fin" class="peer peer mt-1 w-full border-b-2 border-gray-300 px-0 py-1 placeholder:text-transparent focus:border-gray-500 focus:outline-none" required/>
                           <label for="toDate" class="pointer-events-none absolute top-0 left-0 origin-left -translate-y-1/2 transform text-sm text-gray-800 opacity-75 transition-all duration-100 ease-in-out peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:top-0 peer-focus:pl-0 peer-focus:text-sm peer-focus:text-gray-800">Date de fin</label>
+                        </div>
+                        <div class="relative mt-6">
+                          <input type="number" name="nbrOfDays" id="nbrOfDays" placeholder="Nombre de jours" class="peer peer mt-1 w-full border-b-2 border-gray-300 px-0 py-1 placeholder:text-transparent focus:border-gray-500 focus:outline-none" required/>
+                          <label for="nbrOfDays" class="pointer-events-none absolute top-0 left-0 origin-left -translate-y-1/2 transform text-sm text-gray-800 opacity-75 transition-all duration-100 ease-in-out peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:top-0 peer-focus:pl-0 peer-focus:text-sm peer-focus:text-gray-800">Nombre de jours</label>
                         </div>
                         <div class="my-6 relative">
                           <button

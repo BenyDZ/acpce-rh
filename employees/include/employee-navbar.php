@@ -95,9 +95,10 @@
           <li><a href="../employees/include/logout.php">Se déconnecter</a></li>
         </ul>
       </div>
-      <div class="ms-3">
+      <div class="ms-3 flex flex-col">
         <?php
-          echo'<span>' .$_SESSION["username"]. '</span>';
+          echo'<span class="font-bold">' .$_SESSION["username"]. '</span>';
+          echo'<span class="font-normal">' .$_SESSION["autorisation"]. '</span>';
         ?>
       </div>
     </div>

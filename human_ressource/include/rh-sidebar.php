@@ -1,7 +1,7 @@
 <div class="h-screen flex flex-col space-y-5 bg-base-200" data-theme="dim" id="sidebar">
   <ul class="menu bg-base-200 px-4">
     <li>
-      <a class="" href="../human_ressource/dashboard.php">
+      <a class="" href="../dg/dashboard.php">
         <div class="avatar">
           <div class="w-10 rounded">
             <img src="../assets/img/logo1.png" />
@@ -21,10 +21,17 @@
       </a>
     </li>
     <li>
-      <a class="<?php if($page=='congé') {echo 'active';} ?>" href="../human_ressource/leave.php">
-        <i class="lni lni-exit lni-xxl"></i>
-        Congé
-      </a>
+      <details>
+        <summary>
+            <i class="lni lni-exit lni-xxl"></i>
+            Congé
+        </summary>
+        <ul>
+          <li><a class="<?php if($page=='mes-demandes-de-congé') {echo 'active';} ?>" href="../human_ressource/my-leaves-requests.php">Mes demandes de congé</a></li>
+          <li><a class="<?php if($page=='demande-de-congé') {echo 'active';} ?>" href="../human_ressource/leave-requests.php">Demandes de congé</a></li>
+          <li><a class="<?php if($page=='historique-de-congé') {echo 'active';} ?>" href="../human_ressource/leave-history.php">Historique des demandes</a></li>
+        </ul>
+      </details>
     </li>
     <li>
       <a>

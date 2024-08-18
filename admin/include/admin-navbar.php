@@ -1,4 +1,4 @@
-<div class="flex w-full shadow-md px-4">
+<div class="flex w-full shadow-lg px-4">
   <div class="navbar bg-base-100">
     <div class="flex-1">
       <div tabindex="0" role="button" class="btn btn-ghost btn-circle" id="hideNavbarButton">
@@ -71,10 +71,11 @@
           <li><a href="../admin/include/logout.php">Se déconnecter</a></li>
         </ul>
       </div>
-      <div class="ms-3">
+      <div class="flex flex-col ms-3">
         <?php
-          echo'<span>' .$_SESSION["username"]. '</span>';
+          echo'<span class="text-gray-800 font-medium">' .$_SESSION["username"]. '</span>';
         ?>
+        <p class="text-gray-600 font-light">Dev web</p>
       </div>
     </div>
   </div>

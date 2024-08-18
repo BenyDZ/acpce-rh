@@ -15,13 +15,13 @@
 
   <ul class="menu bg-base-200 space-y-3 px-4">
     <li>
-      <a class="<?php if($page=='dashboard') {echo 'active';} ?>" href="../admin/dashboard.php">
+      <a class="<?php if($page=='dashboard') {echo 'active';} ?>" href="../directeur/dashboard.php">
         <ion-icon name="grid-outline" size="small"></ion-icon>
         Tableau de bord
       </a>
     </li>
     <li>
-      <a class="<?php if($page=='département') {echo 'active';} ?>" href="../admin/dashboard.php">
+      <a class="<?php if($page=='département') {echo 'active';} ?>" href="../directeur/dashboard.php">
         <ion-icon name="business-outline" size="small"></ion-icon>
         Département
       </a>
@@ -33,8 +33,8 @@
           Employés
         </summary>
         <ul>
-          <li><a class="<?php if($page=='demande-de-congé') {echo 'active';} ?>" href="../dg/leave-requests.php">Profil</a></li>
-          <li><a class="<?php if($page=='historique-de-congé') {echo 'active';} ?>" href="../dg/leave-history.php">Liste des employés</a></li>
+          <li><a class="<?php if($page=='demande-de-congé') {echo 'active';} ?>" href="../directeur/leave-requests.php">Profil</a></li>
+          <li><a class="<?php if($page=='historique-de-congé') {echo 'active';} ?>" href="../directeur/leave-history.php">Liste des employés</a></li>
         </ul>
       </details>
     </li>
@@ -45,13 +45,13 @@
           Congé
         </summary>
         <ul>
-          <li><a class="<?php if($page=='demande-de-congé') {echo 'active';} ?>" href="../admin/leave-requests.php">Demandes de congé</a></li>
-          <li><a class="<?php if($page=='historique-de-congé') {echo 'active';} ?>" href="../admin/leave-history.php">Historique des demandes</a></li>
+          <li><a class="<?php if($page=='demande-de-congé') {echo 'active';} ?>" href="../directeur/leave-requests.php">Demandes de congé</a></li>
+          <li><a class="<?php if($page=='historique-de-congé') {echo 'active';} ?>" href="../directeur/leave-history.php">Historique des demandes</a></li>
         </ul>
       </details>
     </li>
     <li>
-      <a class="<?php if($page=='permission') {echo 'active';} ?>" href="../admin/dashboard.php">
+      <a class="<?php if($page=='permission') {echo 'active';} ?>" href="../directeur/dashboard.php">
         <ion-icon name="hand-left-outline" size="small"></ion-icon>
         Permission
       </a>

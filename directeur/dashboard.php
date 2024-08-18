@@ -2,7 +2,7 @@
     session_start();
     error_reporting(0);
     include('../include/dbconn.php');
-    if(strlen($_SESSION['rhlogin'])==0){   
+    if(strlen($_SESSION['dglogin'])==0){   
       header('location:../index.php');
     } else {
 ?>
@@ -20,7 +20,7 @@
     <div class="flex-none">
       <?php
         $page='dashboard';
-        include 'include/rh-sidebar.php';
+        include 'include/directeur-sidebar.php';
       ?>
     </div>
 
@@ -28,7 +28,7 @@
       <div class="flex flex-col">
         <?php
           $page='dashboard';
-          include 'include/rh-navbar.php';
+          include 'include/directeur-navbar.php';
         ?>
       </div>
 

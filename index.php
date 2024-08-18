@@ -6,7 +6,7 @@
   {
     $email=$_POST['email'];
     $password=$_POST['password'];
-    $sql ="SELECT Id,Email,Nom,Prénom,MotDePasse,Role,CongéDisponible FROM Employés WHERE Email=:email and MotDePasse=:password";
+    $sql ="SELECT Id,Email,Nom,Prénom,MotDePasse,Poste,CongéDisponible FROM Employés WHERE Email=:email and MotDePasse=:password";
     $query= $dbh -> prepare($sql);
     $query-> bindParam(':email', $email, PDO::PARAM_STR);
     $query-> bindParam(':password', $password, PDO::PARAM_STR);
@@ -15,14 +15,31 @@
 
     if($query->rowCount() > 0)
     {
-      foreach ($results as $result) {
-        $role=$result->Role;
+      foreach ($results as $result) 
+      {
+        $poste=$result->Poste;
         $nom=$result->Nom;
         $prenom=$result->Prénom;
         $conge=$result->CongéDisponible;
         $_SESSION['eid']=$result->Id;
       }
-      if($role=='Admin')
+
+      $sql1 ="SELECT Autorisation FROM Poste WHERE Abbrevation=:autorisation";
+      $query1= $dbh -> prepare($sql1);
+      $query1-> bindParam(':autorisation', $poste, PDO::PARAM_STR);
+      // $query1-> bindParam(':password', $password, PDO::PARAM_STR);
+      $query1-> execute();
+      $results1=$query1->fetchAll(PDO::FETCH_OBJ);
+
+      if($query1->rowCount() > 0)
+      {
+        foreach ($results1 as $result1) 
+        {
+          $autorisation = $result1->Autorisation;
+          echo $autorisation;
+        }
+      }
+      if($autorisation=='admin')
       {
         $_SESSION['alogin']=$_POST['email'];
         $_SESSION['username']= $prenom .' '. $nom;
@@ -31,20 +48,38 @@
         echo "<script type='text/javascript'> document.location = 'admin/dashboard.php'; </script>";
       }
       
-      elseif($role=='Employé'){
-        $_SESSION['emplogin']=$_POST['email'];
+      elseif($autorisation=='Directeur'){
+        $_SESSION['dirlogin']=$_POST['email'];
         $_SESSION['username']= $prenom .' '. $nom;
         $_SESSION['avatar']= substr($prenom,0,1) .''. substr($nom,0,1);
         $_SESSION['conge']= $conge;
         echo "<script type='text/javascript'> document.location = 'employees/leave.php'; </script>";
       }
 
-      elseif($role=='RH'){
+      elseif($autorisation=='RH'){
         $_SESSION['rhlogin']=$_POST['email'];
         $_SESSION['username']= $prenom .' '. $nom;
         $_SESSION['avatar']= substr($prenom,0,1) .''. substr($nom,0,1);
         $_SESSION['conge']= $conge;
         echo "<script type='text/javascript'> document.location = 'human_ressource/dashboard.php'; </script>";
+      }
+
+      elseif($autorisation=='Administrateur-SAF'){
+        $_SESSION['safAdminlogin']=$_POST['email'];
+        $_SESSION['username']= $prenom .' '. $nom;
+        $_SESSION['avatar']= substr($prenom,0,1) .''. substr($nom,0,1);
+        $_SESSION['conge']= $conge;
+        $_SESSION['autorisation']= $autorisation;
+        echo "<script type='text/javascript'> document.location = 'employees/leave.php'; </script>";
+      }
+
+      elseif($autorisation=='Attaché-SAF'){
+        $_SESSION['safAttachelogin']=$_POST['email'];
+        $_SESSION['username']= $prenom .' '. $nom;
+        $_SESSION['avatar']= substr($prenom,0,1) .''. substr($nom,0,1);
+        $_SESSION['autorisation']= $autorisation;
+        $_SESSION['conge']= $conge;
+        echo "<script type='text/javascript'> document.location = 'employees/leave.php'; </script>";
       }
       
       else {
@@ -54,6 +89,7 @@
         $_SESSION['conge']= $conge;
         echo "<script type='text/javascript'> document.location = 'dg/dashboard.php'; </script>";
       }
+
     }else  {
       echo "<script>alert('Sorry, Invalid ².');</script>";
     }

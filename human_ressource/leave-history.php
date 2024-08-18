@@ -14,12 +14,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="../assets/css/output.css" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/icons.css">
+  <link rel="stylesheet" href="../assets/css/datatables.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
   <div class="flex">
     <div class="flex-none">
       <?php
-        $page='dashboard';
+        $page='historique-de-congé';
         include 'include/rh-sidebar.php';
       ?>
     </div>
@@ -27,16 +30,26 @@
     <div class="w-full">
       <div class="flex flex-col">
         <?php
-          $page='dashboard';
+          $page='historique-de-congé';
           include 'include/rh-navbar.php';
         ?>
-      </div>
 
-      <div class="flex">
-        
+        <div class="flex w-full h-full p-5">
+
+          <div class="flex flex-col w-full space-y-3">
+            <h2 class="font-bold">HISTORIQUES DES CONGES</h2>
+            <?php
+              include "include/leave-history.php";
+            ?>
+
+          </div>
+        </div>
       </div>
     </div>
   </div>
+
+  <script src="../assets/js/script.js"></script>
+  <script src="../assets/js/datatables.js"></script>
 </body>
 </html>
 

@@ -1,10 +1,10 @@
 <?php
-    session_start();
-    error_reporting(0);
-    include('../include/dbconn.php');
-    if(strlen($_SESSION['dglogin'])==0){   
-      header('location:../index.php');
-    } else {
+  session_start();
+  error_reporting(0);
+  include('../include/dbconn.php');
+  if(strlen($_SESSION['dglogin'])==0){   
+    header('location:../index.php');
+  } else {
 ?>
 
 <!doctype html>
@@ -22,24 +22,24 @@
   <div class="flex">
     <div class="flex-none">
       <?php
-        $page='historique-de-congé';
-        include 'include/dg-sidebar.php';
+        $page='demande-de-congé';
+        include 'include/directeur-sidebar.php';
       ?>
     </div>
 
     <div class="w-full">
       <div class="flex flex-col">
         <?php
-          $page='historique-de-congé';
-          include 'include/dg-navbar.php';
+          $page='demande-de-congé';
+          include 'include/directeur-navbar.php';
         ?>
 
         <div class="flex w-full h-full p-5">
 
           <div class="flex flex-col w-full space-y-3">
-            <h2 class="font-bold">HISTORIQUES DES CONGES</h2>
+            <h2 class="font-bold">DEMANDES DE CONGE</h2>
             <?php
-              include "include/leave-history.php";
+              include "include/leave-requests-history.php";
             ?>
 
           </div>

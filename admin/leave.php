@@ -34,7 +34,7 @@
           include 'include/admin-navbar.php';
         ?>
 
-        <div class="flex w-full h-full p-5">
+        <div class="flex w-full h-full p-5 bg-gray-100">
 
           <div class="flex flex-col w-full space-y-3">
             

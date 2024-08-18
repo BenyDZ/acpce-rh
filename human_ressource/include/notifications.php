@@ -2,7 +2,7 @@
   include('include/dbconn.php');
   try{
     $eid=$_SESSION['eid'];
-    $sql = "SELECT IdCongé, FromDate, ToDate, PostDate, Statuts, DGResponse, RHResponse, DGSignature, IsRead, IdEmployé from Congé where DGResponse='En attente'";
+    $sql = "SELECT IdCongé, FromDate, ToDate, PostDate, Statuts, DGResponse, RHResponse, DGSignature, IsRead, IdEmployé from Congé where DGResponse='Approuvé' AND RHResponse=0";
     $query = $dbh -> prepare($sql);
     // $query->bindParam(':eid',$eid,PDO::PARAM_STR);
     $query->execute();
