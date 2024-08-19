@@ -2,7 +2,7 @@
   session_start();
   error_reporting(0);
   include('../include/dbconn.php');
-  if(strlen($_SESSION['dglogin'])==0){   
+  if(strlen($_SESSION['dirlogin'])==0){   
     header('location:../index.php');
   } else {
 ?>
@@ -38,10 +38,7 @@
 
           <div class="flex flex-col w-full space-y-3">
             <h2 class="font-bold">DEMANDES DE CONGE</h2>
-            <?php
-              include "include/leave-requests-history.php";
-            ?>
-
+            <?php include "include/leave-requests-history.php"; ?>
           </div>
         </div>
       </div>

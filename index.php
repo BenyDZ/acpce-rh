@@ -22,6 +22,7 @@
         $prenom=$result->Prénom;
         $conge=$result->CongéDisponible;
         $_SESSION['eid']=$result->Id;
+        $_SESSION['poste']=$result->Poste;;
       }
 
       $sql1 ="SELECT Autorisation FROM Poste WHERE Abbrevation=:autorisation";
@@ -36,7 +37,6 @@
         foreach ($results1 as $result1) 
         {
           $autorisation = $result1->Autorisation;
-          echo $autorisation;
         }
       }
       if($autorisation=='admin')
@@ -44,6 +44,7 @@
         $_SESSION['alogin']=$_POST['email'];
         $_SESSION['username']= $prenom .' '. $nom;
         $_SESSION['avatar']= substr($prenom,0,1) .''. substr($nom,0,1);
+        $_SESSION['autorisation']= $autorisation;
         $_SESSION['conge']= $conge;
         echo "<script type='text/javascript'> document.location = 'admin/dashboard.php'; </script>";
       }
@@ -52,14 +53,16 @@
         $_SESSION['dirlogin']=$_POST['email'];
         $_SESSION['username']= $prenom .' '. $nom;
         $_SESSION['avatar']= substr($prenom,0,1) .''. substr($nom,0,1);
+        $_SESSION['autorisation']= $autorisation;
         $_SESSION['conge']= $conge;
-        echo "<script type='text/javascript'> document.location = 'employees/leave.php'; </script>";
+        echo "<script type='text/javascript'> document.location = 'directeur/dashboard.php'; </script>";
       }
 
       elseif($autorisation=='RH'){
         $_SESSION['rhlogin']=$_POST['email'];
         $_SESSION['username']= $prenom .' '. $nom;
         $_SESSION['avatar']= substr($prenom,0,1) .''. substr($nom,0,1);
+        $_SESSION['autorisation']= $autorisation;
         $_SESSION['conge']= $conge;
         echo "<script type='text/javascript'> document.location = 'human_ressource/dashboard.php'; </script>";
       }
@@ -86,6 +89,7 @@
         $_SESSION['dglogin']=$_POST['email'];
         $_SESSION['username']= $prenom .' '. $nom;
         $_SESSION['avatar']= substr($prenom,0,1) .''. substr($nom,0,1);
+        $_SESSION['autorisation']= $autorisation;
         $_SESSION['conge']= $conge;
         echo "<script type='text/javascript'> document.location = 'dg/dashboard.php'; </script>";
       }

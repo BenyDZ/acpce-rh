@@ -11,18 +11,20 @@
         $empid=$_SESSION['eid'];
         $fromdate=$_POST['fromDate'];  
         $todate=$_POST['toDate'];
+        $nbrOfDays=$_POST['nbrOfDays'];
         $isread=0;
 
         if($fromdate > $todate || $fromdate == $todate){
           $error="La date de fin doit être antérieure à la date de début pour être validée !";
         }
         else{
-          $sql="INSERT INTO Congé(FromDate,toDate,IsRead,IdEmployé) VALUES(:fromdate,:todate,:isread,:empid)";
+          $sql="INSERT INTO Congé(FromDate,toDate,IsRead,IdEmployé,NbrOfDay) VALUES(:fromdate,:todate,:isread,:empid,:nbrOfDay)";
           $query = $dbh->prepare($sql);
           $query->bindParam(':fromdate',$fromdate,PDO::PARAM_STR);
           $query->bindParam(':todate',$todate,PDO::PARAM_STR);
           $query->bindParam(':isread',$isread,PDO::PARAM_STR);
           $query->bindParam(':empid',$empid,PDO::PARAM_STR);
+          $query->bindParam(':nbrOfDay',$nbrOfDays,PDO::PARAM_STR);
           $query->execute();
           $lastInsertId = $dbh->lastInsertId();
 
@@ -198,7 +200,7 @@
                           <label for="toDate" class="pointer-events-none absolute top-0 left-0 origin-left -translate-y-1/2 transform text-sm text-gray-800 opacity-75 transition-all duration-100 ease-in-out peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:top-0 peer-focus:pl-0 peer-focus:text-sm peer-focus:text-gray-800">Date de fin</label>
                         </div>
                         <div class="relative mt-6">
-                          <input type="number" name="nbrOfDays" id="nbrOfDays" placeholder="Nombre de jours" class="peer peer mt-1 w-full border-b-2 border-gray-300 px-0 py-1 placeholder:text-transparent focus:border-gray-500 focus:outline-none" required/>
+                          <input type="number" name="nbrOfDays" id="nbrOfDays" placeholder="Nombre de jours" class="peer peer mt-1 w-full border-b-2 border-gray-300 px-0 py-1 placeholder:text-transparent focus:border-gray-500 focus:outline-none" />
                           <label for="nbrOfDays" class="pointer-events-none absolute top-0 left-0 origin-left -translate-y-1/2 transform text-sm text-gray-800 opacity-75 transition-all duration-100 ease-in-out peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:top-0 peer-focus:pl-0 peer-focus:text-sm peer-focus:text-gray-800">Nombre de jours</label>
                         </div>
                         <div class="my-6 relative">
@@ -216,7 +218,6 @@
               </div>
             </div>
             
-
           </div>
         </div>
       </div>

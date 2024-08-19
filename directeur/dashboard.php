@@ -2,7 +2,7 @@
     session_start();
     error_reporting(0);
     include('../include/dbconn.php');
-    if(strlen($_SESSION['dglogin'])==0){   
+    if(strlen($_SESSION['dirlogin'])==0){   
       header('location:../index.php');
     } else {
 ?>
@@ -30,10 +30,10 @@
           $page='dashboard';
           include 'include/directeur-navbar.php';
         ?>
-      </div>
 
-      <div class="flex">
-        
+        <div class="flex">
+          
+        </div>
       </div>
     </div>
   </div>

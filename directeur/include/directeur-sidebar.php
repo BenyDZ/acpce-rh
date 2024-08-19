@@ -33,8 +33,8 @@
           Employés
         </summary>
         <ul>
-          <li><a class="<?php if($page=='demande-de-congé') {echo 'active';} ?>" href="../directeur/leave-requests.php">Profil</a></li>
-          <li><a class="<?php if($page=='historique-de-congé') {echo 'active';} ?>" href="../directeur/leave-history.php">Liste des employés</a></li>
+          <li><a class="<?php if($page=='') {echo 'active';} ?>" href="../directeur/leave-requests.php">Profil</a></li>
+          <li><a class="<?php if($page=='') {echo 'active';} ?>" href="../directeur/leave-history.php">Liste des employés</a></li>
         </ul>
       </details>
     </li>

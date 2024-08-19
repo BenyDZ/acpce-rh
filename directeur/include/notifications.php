@@ -2,7 +2,7 @@
   include('include/dbconn.php');
   try{
     $eid=$_SESSION['eid'];
-    $sql = "SELECT IdCongé, FromDate, ToDate, PostDate, Statuts, DGResponse, RHResponse, DGSignature, IsRead, IdEmployé from Congé where DGResponse='En attente'";
+    $sql = "SELECT IdCongé, Statuts, IdEmployé from Congé where Statuts='En attente'";
     $query = $dbh -> prepare($sql);
     // $query->bindParam(':eid',$eid,PDO::PARAM_STR);
     $query->execute();
@@ -55,7 +55,7 @@
             $notifNumber1=$query1->rowCount();
             if($query1->rowCount() > 0){
               foreach($results1 as $result1){?>
-                <a class="stat" href="#">
+                <a class="stat hover:bg-slate-400" href="../directeur/leave-details.php?leaveId=<?php echo htmlentities($result->IdCongé);?>&empId=<?php echo htmlentities($result->IdEmployé);?>">
                   <div class="stat-title font-bold"><?php echo htmlentities($result1->Prénom);?>  <?php echo htmlentities($result1->Nom);?> </div>
                   <div class="stat-desc">A récemment envoyé une demande de congé le <?php echo htmlentities($result->PostDate);?></div>
                 </a>

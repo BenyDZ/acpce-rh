@@ -10,7 +10,7 @@
 		);
 	}
 
-	unset($_SESSION['alogin']);
+	unset($_SESSION['dirlogin']);
 	session_destroy(); // destroy session
 	header("location:../../index.php"); 
 ?>

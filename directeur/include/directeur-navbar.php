@@ -2,16 +2,8 @@
   <div class="navbar bg-base-100">
     <div class="flex-1">
       <div tabindex="0" role="button" class="btn btn-ghost btn-circle" id="hideNavbarButton">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-5 w-5"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor">
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             d="M4 6h16M4 12h16M4 18h7" />
         </svg>
       </div>
@@ -26,7 +18,7 @@
             echo'<ul>';
               echo'<li><a href="dashboard.php">ACPCE</a></li>';
               echo'<li>Congé</li>';
-              echo'<li>Demandes de congé</li>';
+              echo'<li>Historique</li>';
             echo'</ul>';
           }elseif($page == 'demande-de-congé'){
             echo'<ul>';
@@ -84,9 +76,10 @@
           <li><a href="../dg/include/logout.php">Se déconnecter</a></li>
         </ul>
       </div>
-      <div class="ms-3">
+      <div class="ms-3 flex flex-col">
         <?php
-          echo'<span>' .$_SESSION["username"]. '</span>';
+          echo'<span class="font-bold">' .$_SESSION["username"]. '</span>';
+          echo'<span class="font-normal">' .$_SESSION["poste"]. '</span>';
         ?>
       </div>
     </div>

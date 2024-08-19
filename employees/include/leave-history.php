@@ -8,6 +8,7 @@
       <th>Id Employé(e)</th>
       <th>Date de départ</th>
       <th>Date de fin</th>
+      <th>Nombre de jours</th>
       <th>Date de la demande</th>
       <th>Statut</th>
     </tr>
@@ -15,7 +16,7 @@
   <tbody>
     <?php 
     $eid=$_SESSION['eid'];
-    $sql = "SELECT IdCongé,FromDate,ToDate,PostDate,Statuts from Congé where IdEmployé=:eid";
+    $sql = "SELECT IdCongé,FromDate,ToDate,PostDate,Statuts,NbrOfDay from Congé where IdEmployé=:eid";
     $query = $dbh -> prepare($sql);
     $query->bindParam(':eid',$eid,PDO::PARAM_STR);
     $query->execute();
@@ -29,6 +30,7 @@
         <td><?php echo $eid;?></td>
         <td><?php echo htmlentities($result->FromDate);?></td>
         <td><?php echo htmlentities($result->ToDate);?></td>
+        <td><?php echo htmlentities($result->NbrOfDay);?></td>
         <td><?php echo htmlentities($result->PostDate);?></td>
         <td><?php echo htmlentities($result->Statuts);?></td>
       </tr>
@@ -36,28 +38,3 @@
                                         
   </tbody>
 </table>
-
-<!-- <div class="overflow-y-auto w-full h-[600px]">
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Id Congé</th>
-        <th>Id Employé(e)</th>
-        <th>Nom(s) et prenom(s)</th>
-        <th>Date de la demande</th>
-        <th>Statut</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="hover">
-        <td>1</td>
-        <td>1</td>
-        <td>Cy Ganderton</td>
-        <td>Quality Control Specialist</td>
-        <td>En attente</td>
-        <td><a class="btn" >Voir les details</a></td>
-      </tr>
-    </tbody>
-  </table>
-</div> -->
