@@ -6,7 +6,7 @@
   {
     $email=$_POST['email'];
     $password=$_POST['password'];
-    $sql ="SELECT Id,Email,Nom,Prénom,MotDePasse,Poste,CongéDisponible FROM Employés WHERE Email=:email and MotDePasse=:password";
+    $sql ="SELECT Id,Email,Nom,Prénom,MotDePasse,Poste,CongéDisponible,NomDépartement FROM Employés WHERE Email=:email and MotDePasse=:password";
     $query= $dbh -> prepare($sql);
     $query-> bindParam(':email', $email, PDO::PARAM_STR);
     $query-> bindParam(':password', $password, PDO::PARAM_STR);
@@ -20,6 +20,7 @@
         $poste=$result->Poste;
         $nom=$result->Nom;
         $prenom=$result->Prénom;
+        $NomDépartement=$result->NomDépartement;
         $conge=$result->CongéDisponible;
         $_SESSION['eid']=$result->Id;
         $_SESSION['poste']=$result->Poste;;
@@ -54,6 +55,7 @@
         $_SESSION['username']= $prenom .' '. $nom;
         $_SESSION['avatar']= substr($prenom,0,1) .''. substr($nom,0,1);
         $_SESSION['autorisation']= $autorisation;
+        $_SESSION['dep']= $NomDépartement;
         $_SESSION['conge']= $conge;
         echo "<script type='text/javascript'> document.location = 'directeur/dashboard.php'; </script>";
       }
@@ -72,6 +74,7 @@
         $_SESSION['username']= $prenom .' '. $nom;
         $_SESSION['avatar']= substr($prenom,0,1) .''. substr($nom,0,1);
         $_SESSION['conge']= $conge;
+        $_SESSION['dep']= $NomDépartement;
         $_SESSION['autorisation']= $autorisation;
         echo "<script type='text/javascript'> document.location = 'employees/leave.php'; </script>";
       }
@@ -82,6 +85,9 @@
         $_SESSION['avatar']= substr($prenom,0,1) .''. substr($nom,0,1);
         $_SESSION['autorisation']= $autorisation;
         $_SESSION['conge']= $conge;
+        $_SESSION['nom']= $nom;
+        $_SESSION['prenom']= $prenom;
+        $_SESSION['dep']= $NomDépartement;
         echo "<script type='text/javascript'> document.location = 'employees/leave.php'; </script>";
       }
       

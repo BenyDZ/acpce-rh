@@ -18,9 +18,9 @@
   <tbody>
     <?php 
     $eid=$_SESSION['eid'];
-    $sql = "SELECT IdCongé, FromDate, ToDate, PostDate, IdEmployé, Statuts, NbrOfDay from Congé where Statuts='En cours'";
+    $sql = "SELECT IdCongé, FromDate, ToDate, PostDate, IdEmployé, Statuts, NbrOfDay from Congé where Statuts='En cours' and DepName=:dep";
     $query = $dbh -> prepare($sql);
-    // $query->bindParam(':eid',$eid,PDO::PARAM_STR);
+    $query->bindParam(':dep',$_SESSION['dep'],PDO::PARAM_STR);
     $query->execute();
     $results=$query->fetchAll(PDO::FETCH_OBJ);
     $cnt=1;

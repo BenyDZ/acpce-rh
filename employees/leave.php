@@ -18,13 +18,16 @@
           $error="La date de fin doit être antérieure à la date de début pour être validée !";
         }
         else{
-          $sql="INSERT INTO Congé(FromDate,toDate,IsRead,IdEmployé,NbrOfDay) VALUES(:fromdate,:todate,:isread,:empid,:nbrOfDay)";
+          $sql="INSERT INTO Congé(FromDate, ToDate, IsRead, IdEmployé, NbrOfDay, EmpFirstName, EmpLastName, DepName) VALUES(:fromdate, :todate, :isread, :empid, :nbrOfDay, :firstName, :lastName, :depName)";
           $query = $dbh->prepare($sql);
           $query->bindParam(':fromdate',$fromdate,PDO::PARAM_STR);
           $query->bindParam(':todate',$todate,PDO::PARAM_STR);
           $query->bindParam(':isread',$isread,PDO::PARAM_STR);
           $query->bindParam(':empid',$empid,PDO::PARAM_STR);
           $query->bindParam(':nbrOfDay',$nbrOfDays,PDO::PARAM_STR);
+          $query->bindParam(':firstName',$_SESSION['prenom'] ,PDO::PARAM_STR);
+          $query->bindParam(':lastName',$_SESSION['nom'] ,PDO::PARAM_STR);
+          $query->bindParam(':depName',$_SESSION['dep'] ,PDO::PARAM_STR);
           $query->execute();
           $lastInsertId = $dbh->lastInsertId();
 

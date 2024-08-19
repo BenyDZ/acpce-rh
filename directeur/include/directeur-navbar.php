@@ -65,14 +65,8 @@
             </div>
           </div>
         </div>
-        <ul
-          tabindex="0"
-          class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-          <li>
-            <a class="justify-between">
-              Profil
-            </a>
-          </li>
+        <ul tabindex="0" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+          <li><a class="justify-between">Profil</a></li>
           <li><a href="../dg/include/logout.php">Se déconnecter</a></li>
         </ul>
       </div>

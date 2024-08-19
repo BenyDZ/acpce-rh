@@ -2,9 +2,9 @@
   include('include/dbconn.php');
   try{
     $eid=$_SESSION['eid'];
-    $sql = "SELECT IdCongé, Statuts, IdEmployé from Congé where Statuts='En attente'";
+    $sql = "SELECT IdCongé, Statuts, IdEmployé from Congé where Statuts='En attente' and DepName=:dep";
     $query = $dbh -> prepare($sql);
-    // $query->bindParam(':eid',$eid,PDO::PARAM_STR);
+    $query->bindParam(':dep',$_SESSION['dep'],PDO::PARAM_STR);
     $query->execute();
     $results=$query->fetchAll(PDO::FETCH_OBJ);
     $notifNumber=$query->rowCount();
@@ -46,7 +46,7 @@
         {
           try
           {
-            $sql1 = "SELECT Nom, Prénom from Employés where Id=:empId";
+            $sql1 = "SELECT Nom, Prénom, NomDépartement from Employés where Id=:empId";
             $query1 = $dbh -> prepare($sql1);
             $query1->bindParam(':empId',$result->IdEmployé,PDO::PARAM_STR);
             $query1->execute();
